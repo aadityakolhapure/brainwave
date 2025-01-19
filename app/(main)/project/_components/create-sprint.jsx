@@ -10,6 +10,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Card, CardContent } from "@/components/ui/card";
+// import { CalendarIcon } from "@heroicons/react/outline";
+// import { DayPicker } from "react-day-picker"; // assuming you're using react-day-picker
 
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -64,29 +66,31 @@ export default function SprintCreationForm({
 
   return (
     <>
-      <div className="flex justify-between">
-        <h1 className="text-5xl font-bold mb-8 gradient-title">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-700 via-purple-800 to-blue-900 bg-clip-text text-transparent">
           {projectTitle}
         </h1>
         <Button
-          className="mt-2"
+          className="mt-2 px-6 py-2 text-white font-semibold rounded-lg shadow-md transition-colors hover:bg-red-600 bg-violet-500"
           onClick={() => setShowForm(!showForm)}
           variant={!showForm ? "default" : "destructive"}
         >
           {!showForm ? "Create New Sprint" : "Cancel"}
         </Button>
       </div>
+
       {showForm && (
-        <Card className="pt-4 mb-4">
+        <Card className="bg-white shadow-xl rounded-lg p-6 mb-6">
           <CardContent>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex gap-4 items-end"
+              className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8"
             >
-              <div className="flex-1">
+              {/* Sprint Name */}
+              <div className="flex flex-col">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium mb-1"
+                  className="text-sm font-medium text-gray-700 mb-2"
                 >
                   Sprint Name
                 </label>
@@ -94,7 +98,8 @@ export default function SprintCreationForm({
                   id="name"
                   {...register("name")}
                   readOnly
-                  className="bg-slate-950"
+                  className="border border-gray-300 rounded-md px-4 py-2 bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  placeholder="Enter sprint name"
                 />
                 {errors.name && (
                   <p className="text-red-500 text-sm mt-1">
@@ -102,8 +107,10 @@ export default function SprintCreationForm({
                   </p>
                 )}
               </div>
-              <div className="flex-1">
-                <label className="block text-sm font-medium mb-1">
+
+              {/* Sprint Duration */}
+              <div className="flex flex-col">
+                <label className="text-sm font-medium text-gray-700 mb-2">
                   Sprint Duration
                 </label>
                 <Controller
@@ -114,11 +121,11 @@ export default function SprintCreationForm({
                       <PopoverTrigger asChild>
                         <Button
                           variant="outline"
-                          className={`w-full justify-start text-left font-normal bg-slate-950 ${
-                            !dateRange && "text-muted-foreground"
+                          className={`w-full text-left font-normal rounded-md px-4 py-2 bg-gray-100 text-black focus:outline-none ${
+                            !dateRange && "text-gray-500"
                           }`}
                         >
-                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          <CalendarIcon className="mr-2 h-5 w-5 " />
                           {dateRange.from && dateRange.to ? (
                             format(dateRange.from, "LLL dd, y") +
                             " - " +
@@ -128,21 +135,19 @@ export default function SprintCreationForm({
                           )}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent
-                        className="w-auto bg-slate-900"
-                        align="start"
-                      >
+                      <PopoverContent className="w-auto bg-black rounded-lg shadow-lg p-4 text-white">
                         <DayPicker
                           classNames={{
-                            chevron: "fill-blue-500",
-                            range_start: "bg-blue-700",
-                            range_end: "bg-blue-700",
-                            range_middle: "bg-blue-400",
-                            day_button: "border-none",
-                            today: "border-2 border-blue-700",
+                            chevron: "fill-violet-500", // Retaining the violet color for the chevron
+                            range_start: "bg-violet-600", // Darker background for the start of the range
+                            range_end: "bg-violet-600", // Darker background for the end of the range
+                            range_middle: "bg-violet-400", // Lighter violet for the middle of the range
+                            day_button: "border-none text-white", // Light text color for the day buttons
+                            today: "border-2 border-violet-500 text-violet-500", // Highlight today with a violet border and text
+                            selected: "bg-violet-500 text-white", // Selected days will have a solid violet background with white text
                           }}
                           mode="range"
-                          disabled={[{ before: new Date() }]}
+                          disabled={[{ before: new Date() }]} // Disable dates before today
                           selected={dateRange}
                           onSelect={(range) => {
                             if (range?.from && range?.to) {
@@ -156,7 +161,13 @@ export default function SprintCreationForm({
                   )}
                 />
               </div>
-              <Button type="submit" disabled={createSprintLoading}>
+
+              {/* Submit Button */}
+              <Button
+                type="submit"
+                className="mt-4 bg-violet-500 text-white font-medium rounded-lg px-6 py-2 hover:bg-violet-600 focus:ring-4 focus:ring-violet-300"
+                disabled={createSprintLoading}
+              >
                 {createSprintLoading ? "Creating..." : "Create Sprint"}
               </Button>
             </form>

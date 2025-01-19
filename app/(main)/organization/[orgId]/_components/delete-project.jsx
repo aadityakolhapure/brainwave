@@ -39,7 +39,7 @@ export default function DeleteProject({ projectId }) {
   return (
     <>
       <Button
-        variant="ghost"
+        // variant="ghost"
         size="sm"
         className={`${isDeleting ? "animate-pulse" : ""}`}
         onClick={handleDelete}

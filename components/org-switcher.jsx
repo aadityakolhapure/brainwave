@@ -22,7 +22,7 @@ const OrgSwitcher = () => {
   }
 
   return (
-    <div className="flex justify-end mt-1">
+    <div className="flex justify-end mt-2">
       <SignedIn>
         <OrganizationSwitcher
           hidePersonal
@@ -35,8 +35,11 @@ const OrgSwitcher = () => {
           appearance={{
             elements: {
               organizationSwitcherTrigger:
-                "border border-gray-300 rounded-md px-5 py-2",
-              organizationSwitcherTriggerIcon: "text-white",
+                "border border-violet-500 rounded-md px-5 py-2 text-violet-500 bg-white hover:bg-violet-100 transition duration-200",
+              organizationSwitcherTriggerIcon: "text-violet-500",
+              organizationSwitcher: "shadow-lg border border-gray-200 rounded-md bg-white",
+              organizationSwitcherListItem:
+                "px-4 py-2 hover:bg-violet-100 hover:text-violet-700 cursor-pointer transition duration-200",
             },
           }}
         />

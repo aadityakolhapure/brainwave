@@ -22,7 +22,7 @@ const Organization = async ({ params }) => {
   return (
     <div className="container mx-auto px-4">
       <div className="mb-4 flex flex-col sm:flex-row justify-between items-start">
-        <h1 className="text-5xl font-bold gradient-title pb-2">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-700 via-purple-800 to-blue-900 bg-clip-text text-transparent pb-2">
           {organization.name}&rsquo;s Projects
         </h1>
 

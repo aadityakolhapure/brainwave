@@ -77,48 +77,63 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       {/* Hero Section */}
+      {/* TODO:make this section responsive */}
       <section className="container mx-auto py-20 text-center">
-        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold gradient-title pb-6 flex flex-col">
+        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold pb-6 flex flex-col text-gray-800">
           Streamline Your Workflow <br />
           <span className="flex mx-auto gap-3 sm:gap-4 items-center">
             with
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold gradient-title pb-6 flex flex-col">
-              BRAINWAVE
-              <span className="w-full h-1 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 mt-2 block"></span>
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold pb-6 flex flex-col">
+              <span className="bg-gradient-to-r from-indigo-700 via-purple-800 to-blue-900 bg-clip-text text-transparent">
+                BRAINWAVE
+              </span>
+              <span className="w-full h-1 bg-gradient-to-r from-indigo-700 via-purple-800 to-blue-900 mt-2 block"></span>
             </h1>
           </span>
         </h1>
-        <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+
+        <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
           Empower your team with our intuitive project management solution.
         </p>
-        <p className="text-xl mb-12 max-w-2xl mx-auto"></p>
         <Link href="/onboarding">
-          <Button size="lg" className="mr-4 bg-black hover:bg-violet-900 text-white">
+          <Button
+            size="lg"
+            className="mr-4 bg-violet-600 hover:bg-violet-700 text-white"
+          >
             Get Started <ChevronRight size={18} className="ml-1" />
           </Button>
         </Link>
         <Link href="#features">
-          <Button size="lg" variant="outline" className="mr-4 hover:bg-slate-200">
+          <Button
+            size="lg"
+            variant="outline"
+            className="mr-4 border-gray-300 hover:bg-gray-100 hover:border-gray-400 hover:text-gray-800"
+          >
             Learn More
           </Button>
         </Link>
       </section>
 
       {/* Features Section */}
-      <section id="features" className=" bg-[#1f0036]  py-20 px-5">
+      <section id="features" className="bg-gray-100 py-20 px-5">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold mb-12 text-center text-white">Key Features</h3>
+          <h3 className="text-3xl font-bold mb-12 text-center text-gray-800">
+            Key Features
+          </h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-gray-800">
+              <Card
+                key={index}
+                className="bg-white shadow-md border border-gray-200"
+              >
                 <CardContent className="pt-6">
-                  <feature.icon className="h-12 w-12 mb-4 text-violet-300" />
-                  <h4 className="text-xl font-semibold mb-2 text-white">
+                  <feature.icon className="h-12 w-12 mb-4 text-violet-500" />
+                  <h4 className="text-xl font-semibold mb-2 text-gray-800">
                     {feature.title}
                   </h4>
-                  <p className="text-gray-300">{feature.description}</p>
+                  <p className="text-gray-600">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -129,7 +144,7 @@ export default function Home() {
       {/* Companies Carousel */}
       <section className="py-20">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold mb-12 text-center text-white">
+          <h3 className="text-3xl font-bold mb-12 text-center text-gray-800">
             Trusted by Industry Leaders
           </h3>
           <CompanyCarousel />
@@ -137,20 +152,23 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <FAQ />
+      {/* <FAQ /> */}
 
       {/* CTA Section */}
-      <section className="py-20 text-center px-5">
+      <section className="py-20 text-center px-5 bg-violet-100">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold mb-6 gradient-title">
+          <h3 className="text-3xl font-bold mb-6 text-gray-800">
             Ready to Transform Your Workflow?
           </h3>
-          <p className="text-xl mb-12 text-gray-200">
+          <p className="text-xl mb-12 text-gray-700">
             Join thousands of teams already using BRAINWAVE to streamline their
             projects and boost productivity.
           </p>
           <Link href="/onboarding">
-            <Button size="lg" className="animate-bounce">
+            <Button
+              size="lg"
+              className="bg-violet-600 text-white hover:bg-violet-700"
+            >
               Start For Free <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>

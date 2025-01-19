@@ -7,7 +7,7 @@ import { PenBox } from "lucide-react";
 import Image from "next/image";
 import { checkUser } from "@/lib/checkUser";
 import UserLoading from "./user-loading";
-import logo from "../public/favicon.ico";
+import logo from "../public/logo.jpg";
 
 async function Header() {
   await checkUser();
@@ -24,7 +24,7 @@ async function Header() {
                 height={46}
                 className="h-8 w-auto object-contain"
               />
-               <span className="ml-2 text-white">BrainWave AI</span>
+               <span className="ml-2 text-black">BrainWave AI</span>
             </h1>
         </Link>
         <div className="flex items-center gap-4">

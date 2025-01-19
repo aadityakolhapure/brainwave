@@ -87,11 +87,13 @@ body {
 } */
 
 .animated-dotted-background {
-  background-color: #1f0036;
-  background-image: radial-gradient(#4a5568 1px, transparent 1px);
+  background-color: #f8f9fa; /* Light background color */
+  background-image: radial-gradient(#4a4a4a 1px, transparent 1px); /* Dark gray dots */
   background-size: 30px 30px;
   /* animation: moveDots 10s linear infinite; */
 }
+
+
 
 @layer utilities {
   .gradient-title {
@@ -104,3 +106,5 @@ body {
   padding-left: 15px !important;
   color: white;
 }
+
+
