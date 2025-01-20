@@ -60,7 +60,7 @@ export default function BoardFilters({ issues, onFilterChange }) {
     <div className="space-y-4">
       <div className="flex flex-col pr-2 sm:flex-row gap-4 sm:gap-6 mt-6">
         <Input
-          className="w-full sm:w-72"
+          className="w-full sm:w-72 bg-white"
           placeholder="Search issues..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -93,7 +93,7 @@ export default function BoardFilters({ issues, onFilterChange }) {
         </div>
 
         <Select value={selectedPriority} onValueChange={setSelectedPriority}>
-          <SelectTrigger className="w-full sm:w-52">
+          <SelectTrigger className="w-full sm:w-52 bg-white">
             <SelectValue placeholder="Select priority" />
           </SelectTrigger>
           <SelectContent>
@@ -109,7 +109,7 @@ export default function BoardFilters({ issues, onFilterChange }) {
           <Button
             variant="ghost"
             onClick={clearFilters}
-            className="flex items-center"
+            className="flex items-center hover:bg-violet-600 hover:text-white"
           >
             <X className="mr-2 h-4 w-4" /> Clear Filters
           </Button>

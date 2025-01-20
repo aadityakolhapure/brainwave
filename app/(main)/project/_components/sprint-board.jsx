@@ -156,11 +156,11 @@ export default function SprintBoard({ sprints, projectId, orgId }) {
         <p className="text-red-500 mt-2">{updateIssuesError.message}</p>
       )}
       {(updateIssuesLoading || issuesLoading) && (
-        <BarLoader className="mt-4" width={"100%"} color="#36d7b7" />
+        <BarLoader className="mt-4" width={"100%"} color="#5144cc" />
       )}
 
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 bg-slate-900 p-4 rounded-lg">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 bg-gradient-to-r from-violet-50 to-violet-100 p-4 rounded-lg">
           {statuses.map((column) => (
             <Droppable key={column.key} droppableId={column.key}>
               {(provided) => (
@@ -208,7 +208,7 @@ export default function SprintBoard({ sprints, projectId, orgId }) {
                     currentSprint.status !== "COMPLETED" && (
                       <Button
                         variant="ghost"
-                        className="w-full"
+                        className="w-full hover:bg-violet-400 hover:text-white"
                         onClick={() => handleAddIssue(column.key)}
                       >
                         <Plus className="mr-2 h-4 w-4" />
