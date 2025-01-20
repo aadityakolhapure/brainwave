@@ -20,6 +20,7 @@ import CompanyCarousel from "@/components/company-carousel";
 import Image from "next/image";
 import Footer from "@/components/footer";
 import FAQ from "@/components/faq";
+import name from "../public/name.png"
 
 const faqs = [
   {
@@ -85,13 +86,12 @@ export default function Home() {
           Streamline Your Workflow <br />
           <span className="flex mx-auto gap-3 sm:gap-4 items-center">
             with
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold pb-6 flex flex-col">
-              <span className="bg-gradient-to-r from-indigo-700 via-purple-800 to-blue-900 bg-clip-text text-transparent">
-                BRAINWAVE
-              </span>
-              <span className="w-full h-1 bg-gradient-to-r from-indigo-700 via-purple-800 to-blue-900 mt-2 block"></span>
-            </h1>
+            {/* <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold pb-6 flex flex-col"> */}
+              {/* <span className="w-full h-1 bg-gradient-to-r from-indigo-700 via-purple-800 to-blue-900 mt-2 block"></span> */}
+            {/* </h1> */}
           </span>
+          <Image src={name} alt="ZCRUM" className="w-100 h-36 mx-auto" />
+
         </h1>
 
         <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">

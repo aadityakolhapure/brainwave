@@ -97,7 +97,7 @@ body {
 
 @layer utilities {
   .gradient-title {
-    @apply font-extrabold bg-gradient-to-br from-violet-500 via-violet-100 to-violet-400 bg-clip-text tracking-tighter text-transparent pr-2 pb-2;
+    @apply font-extrabold bg-gradient-to-br from-violet-800 via-violet-300 to-violet-500 bg-clip-text tracking-tighter text-transparent pr-2 pb-2;
   }
 }
 

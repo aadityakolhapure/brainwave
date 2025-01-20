@@ -94,70 +94,78 @@ export default function IssueDetailsDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent>
-        <DialogHeader>
-          <div className="flex justify-between items-center">
-            <DialogTitle className="text-3xl">{issue.title}</DialogTitle>
-            {isProjectPage && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={handleGoToProject}
-                title="Go to Project"
-              >
-                <ExternalLink className="h-4 w-4" />
-              </Button>
-            )}
-          </div>
+      <DialogContent className="bg-white shadow-lg rounded-xl p-6 border border-gray-300">
+        <DialogHeader className="flex justify-between items-center">
+          <DialogTitle className="text-2xl font-semibold text-gray-800">
+            {issue.title}
+          </DialogTitle>
+          {isProjectPage && (
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleGoToProject}
+              title="Go to Project"
+            >
+              <ExternalLink className="h-5 w-5 text-gray-500" />
+            </Button>
+          )}
         </DialogHeader>
         {(updateLoading || deleteLoading) && (
-          <BarLoader width={"100%"} color="#36d7b7" />
+          <BarLoader width={"100%"} color="#36d7b7" className="mt-2" />
         )}
-        <div className="space-y-4">
-          <div className="flex items-center space-x-2">
-            <Select value={status} onValueChange={handleStatusChange}>
-              <SelectTrigger className="">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                {statuses.map((option) => (
-                  <SelectItem key={option.key} value={option.key}>
-                    {option.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select
-              value={priority}
-              onValueChange={handlePriorityChange}
-              disabled={!canChange}
-            >
-              <SelectTrigger className={`border ${borderCol} rounded`}>
-                <SelectValue placeholder="Priority" />
-              </SelectTrigger>
-              <SelectContent>
-                {priorityOptions.map((option) => (
-                  <SelectItem key={option} value={option}>
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+        <div className="mt-4 space-y-6">
+          <div className="flex items-center justify-between gap-4">
+            <div className="w-full">
+              <h4 className="text-sm text-gray-600">Status</h4>
+              <Select value={status} onValueChange={handleStatusChange}>
+                <SelectTrigger className="w-full border-gray-300">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  {statuses.map((option) => (
+                    <SelectItem key={option.key} value={option.key}>
+                      {option.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="w-full">
+              <h4 className="text-sm text-gray-600">Priority</h4>
+              <Select
+                value={priority}
+                onValueChange={handlePriorityChange}
+                disabled={!canChange}
+              >
+                <SelectTrigger
+                  className={`w-full border ${borderCol} rounded border-gray-300`}
+                >
+                  <SelectValue placeholder="Priority" />
+                </SelectTrigger>
+                <SelectContent>
+                  {priorityOptions.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           <div>
-            <h4 className="font-semibold">Description</h4>
+            <h4 className="font-semibold text-gray-700">Description</h4>
             <MDEditor.Markdown
-              className="rounded px-2 py-1"
+              className="bg-gray-50 p-4 rounded-md text-sm text-gray-800"
               source={issue.description ? issue.description : "--"}
             />
           </div>
-          <div className="flex justify-between">
-            <div className="flex flex-col gap-2">
-              <h4 className="font-semibold">Assignee</h4>
+          <div className="flex justify-between gap-4">
+            <div className="w-full">
+              <h4 className="font-semibold text-gray-700">Assignee</h4>
               <UserAvatar user={issue.assignee} />
             </div>
-            <div className="flex flex-col gap-2">
-              <h4 className="font-semibold">Reporter</h4>
+            <div className="w-full">
+              <h4 className="font-semibold text-gray-700">Reporter</h4>
               <UserAvatar user={issue.reporter} />
             </div>
           </div>
@@ -166,12 +174,13 @@ export default function IssueDetailsDialog({
               onClick={handleDelete}
               disabled={deleteLoading}
               variant="destructive"
+              className="w-full"
             >
               {deleteLoading ? "Deleting..." : "Delete Issue"}
             </Button>
           )}
           {(deleteError || updateError) && (
-            <p className="text-red-500">
+            <p className="text-sm text-red-500 mt-2">
               {deleteError?.message || updateError?.message}
             </p>
           )}
