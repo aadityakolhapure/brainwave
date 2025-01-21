@@ -13,3 +13,4 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
 ```
+![image](https://github.com/aadityakolhapure/brainwave/blob/main/public/Screenshot%202025-01-21%20213833.png)
